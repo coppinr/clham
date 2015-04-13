@@ -6,7 +6,7 @@ Command-line (Canadian) HAM amateur radio
 by Rhiannon Coppin, North Vancouver, B.C.
 April 7, 2015
 
-This command-line python utility reads in the question bank, which is made available as a dual-language delimited text file from Industry Canada's web site.
+This command-line python utility reads in and presents various forms of the question bank, which is made available as a dual-language delimited text file from Industry Canada's web site.
 The URL of this file (zipped) at this time (April 2015) is: http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip
 Locator URL on Industry Canada site: http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html
 Note: If the format of the file changes substantially, this program may need modification to function.
@@ -70,8 +70,8 @@ section_select = [
 """
 TO DO
 FIXED - UNICODE French character compatibility problem
-Better french translation
-Timer for text simulator mode
+Better/actual french translation
+Timer for test simulator mode
 ADD URL downloadability
 """
 import re
@@ -100,11 +100,12 @@ class CLHAM:
     	self.__wronganswers = []
     	self.__starttime = 0
     	self._endtime = 0
+    	self.__ordered = 0
     	
     def parseOptions(self, args):
     	import getopt
     	try:
-    		optlist, arglist = getopt.getopt(args, 'i:m:f')  #f is a switch and doesn't require an arg
+    		optlist, arglist = getopt.getopt(args, 'i:m:fo')  #f is a switch and doesn't require an arg
     	except getopt.GetoptError, e:
     		print e
     		return None
@@ -116,6 +117,8 @@ class CLHAM:
     			self.__mode = value
     		elif option.lower() in ('-f', ):
     			self.__lang_sel = 1
+    		elif option.lower() in ('-o', ):
+    			self.__ordered = 1
 
 
         if not self.__filename:
@@ -199,7 +202,9 @@ class CLHAM:
     			temp.append(question[i+offset])
     		set.append(temp)
     		self.__workingbank.append(set)
-    	shuffle(self.__workingbank)
+    	#Allow full test shuffle or leave order alone
+    	if self.__ordered == 0:
+    		shuffle(self.__workingbank)
     	for question in self.__workingbank:
     		correct_answer = question[2][0]
     		shuffle(question[2])
@@ -264,21 +269,22 @@ class CLHAM:
     def save(self):
     	#self.__endtime = time.time()
 		print "Total time elapsed is: "+ self.get_time_elapsed()
-		print "You are leaving the CLHAM. Would you like to save the set of questions you got wrong to a text file to review or load into the CLHAM later? (Enter N for 'no' or the filename if yes, then press Enter)"
-		response = raw_input()
-		if response == '':
-			print "Goodbye."
-		elif response.lower() == 'n':
-			print "Your loss."
-		else:		
-			print "Saving questions for review to "+ response
-			f = open(response, 'w')
-			print self.__wronganswers
-			for line in self.__wronganswers:
-				temp = ';'.join(line[2])
-				f.write(';'.join([line[0],line[1],temp])+'\n')
-			f.close()
-		#pause()
+		print "You are leaving the CLHAM."
+		if len(self.__wronganswers) > 1:
+			print "Would you like to save the set of questions you got wrong to a text file to review or load into the CLHAM later? (Enter N for 'no' or the filename if yes, then press Enter)"
+			response = raw_input()
+			if response == '':
+				print "Goodbye."
+			elif response.lower() == 'n':
+				print "Your loss."
+			else:		
+				print "Saving questions for review to "+ response
+				f = open(response, 'w')
+				#print self.__wronganswers
+				for line in self.__wronganswers:
+					temp = ';'.join(line[2])
+					f.write(';'.join([line[0],line[1],temp])+'\n')
+				f.close()
     
 def main():
 	print title
