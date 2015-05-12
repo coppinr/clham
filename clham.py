@@ -42,8 +42,8 @@ title = """
 
 """
 intro = [
-"Command-Line HAM: Helping you study for the Canadian Amateur Radio Licensing exam(s)",
-"Command-Line HAM: Vous aidez a etudier pour l'examen 'Canadian Amateur Radio Licensing'"]
+"Command-Line HAM: Helping you study for the Basic Canadian Amateur Radio Licensing exam(s)",
+"Command-Line HAM: Pour vous aider à étudier pour l'examen de licence de base de radio amateur au Canada"]
 section_select = [
 		"""Which sections would you like to run? Hit Enter for all, or a single digit, a range (1-8) or comma-separated values (1,3,4):
     	1 - Regulations and Policies (25 subsections)
@@ -55,22 +55,24 @@ section_select = [
     	7 - Propagation (8 subsections)
     	8 - Interference and Suppression (5 subsections)
     	""",
-    	"""Quel(s) sections voulez-vous essayer? Appuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-8), ou une series de nombres comme ca: (1,3,4):
-    	1 - Regulations
-    	2 - Operations
-    	3 - Station Assembly, Practices and Safety
-    	4 - Electronique (1)
-    	5 - Electronique (2)
-    	6 - Les antennas
+    	"""Quelles sections voulez-vous essayer? Appuyez sur Entrée pour tous, ou d'un seul chiffre , une gamme ( 1-8 ) ou des valeurs séparées par des virgules ( 1,3,4 )
+    	1 - Règlements et politiques
+    	2 - Opérations et procédures
+    	3 - L'assemblée des stations, les pratiques et la sécurité 
+    	4 - Composantes des circuits
+    	5 - Électronique de base et la théorie
+    	6 - Antennes et lignes
     	7 - Propagation
-    	8 - L'Interference et la Suppression
+    	8 - Ingérence et répression
     	"""
 ]
 
 """
 TO DO
 FIXED - UNICODE French character compatibility problem
-Better/actual french translation
+FIXED - Attempt a better french translation
+Expand text/intro to be compatible with advanced test.
+WANTS:
 Timer for test simulator mode
 ADD URL downloadability
 """
