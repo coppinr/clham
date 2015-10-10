@@ -5,6 +5,7 @@ Command-line (Canadian) HAM amateur radio
 
 by Rhiannon Coppin, North Vancouver, B.C.
 April 7, 2015
+Updated Sept. 21, 2015 to use Advanced Question set as well.
 
 This command-line python utility reads in and presents various forms of the question bank, which is made available as a dual-language delimited text file from Industry Canada's web site.
 The URL of this file (zipped) at this time (April 2015) is: http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip
@@ -42,9 +43,9 @@ title = """
 
 """
 intro = [
-"Command-Line HAM: Helping you study for the Basic Canadian Amateur Radio Licensing exam(s)",
-"Command-Line HAM: Pour vous aider à étudier pour l'examen de licence de base de radio amateur au Canada"]
-section_select = [
+"Command-Line HAM: Helping you study for the Canadian Amateur Radio Licensing exam(s)",
+"Command-Line HAM: Vous aidez a etudier pour l'examen 'Canadian Amateur Radio Licensing'"]
+section_select = [ [
 		"""Which sections would you like to run? Hit Enter for all, or a single digit, a range (1-8) or comma-separated values (1,3,4):
     	1 - Regulations and Policies (25 subsections)
     	2 - Operating and Procedures (9 subsections)
@@ -55,32 +56,51 @@ section_select = [
     	7 - Propagation (8 subsections)
     	8 - Interference and Suppression (5 subsections)
     	""",
-    	"""Quelles sections voulez-vous essayer? Appuyez sur Entrée pour tous, ou d'un seul chiffre , une gamme ( 1-8 ) ou des valeurs séparées par des virgules ( 1,3,4 )
-    	1 - Règlements et politiques
-    	2 - Opérations et procédures
-    	3 - L'assemblée des stations, les pratiques et la sécurité 
-    	4 - Composantes des circuits
-    	5 - Électronique de base et la théorie
-    	6 - Antennes et lignes
+    	"""Quel(s) sections voulez-vous essayer? Appuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-8), ou une series de nombres comme ca: (1,3,4):
+    	1 - Regulations
+    	2 - Operations
+    	3 - Station Assembly, Practices and Safety
+    	4 - Electronique (1)
+    	5 - Electronique (2)
+    	6 - Les antennas
     	7 - Propagation
-    	8 - Ingérence et répression
+    	8 - L'Interference et la Suppression
     	"""
+	],
+	[
+		"""Which sections would you like to run? Hit Enter for all, or a single digit, a range (1-7) or comma-separated values (1,3,4):
+    	1 - RF current, time constant, RLC circuit resonance and Q (5 subsections)
+    	2 - Diodes, op-amps, frequency multipliers, crystal oscillators, filters (12 subsections)
+    	3 - Measuring with voltmeter, oscilloscope, freq. counter, dip meter (6 subsections)
+    	4 - Transformers and power supplies (4 subsections)
+    	5 - Modulation (9 subsections)
+    	6 - Signal processing (5 subsections)
+    	7 - Antennas and tuning (9 subsections)
+    	""",
+    	"""Quel(s) sections voulez-vous essayer? Appuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-7), ou une series de nombres comme ca: (1,3,4):
+    	1 - RF / RLC (5)
+    	2 - Semiconductors (12)
+    	3 - Measurements (6)
+    	4 - Power (4)
+    	5 - Modulation (9)
+    	6 - Signal processing (5)
+    	7 - Antennas (9)
+    	"""
+	]
 ]
 
 """
 TO DO
 FIXED - UNICODE French character compatibility problem
-FIXED - Attempt a better french translation
-Expand text/intro to be compatible with advanced test.
-WANTS:
-Timer for test simulator mode
+Better french translation
+Timer for text simulator mode
 ADD URL downloadability
 """
 import re
 import time
 
 def usage():
-    return """\nUsage: clham.py -i <input textfile> \nOPTIONAL arguments: \t-m <mode: all [DEFAULT], exam>\n\t\t\t-f <selects francais -- English is DEFAULT>"""
+    return """\nUsage: clham.py -i <input textfile> \nOPTIONAL arguments: \t-a <advanced question set [DEFAULT is basic]> \n\t\t\t-m <mode: all [DEFAULT], exam>\n\t\t\t-f <selects francais -- English is DEFAULT>"""
 
 def pause():
 	print("(Hit enter to continue.)")
@@ -92,6 +112,7 @@ class CLHAM:
     def __init__(self):
     	# input filename or URL
         self.__filename = ''
+        self.__test_types = 0 #basic
         #mode = all questions, just some sections, or an exam simulation mode
         self.__mode = 'all'
         #default language is english
@@ -102,12 +123,11 @@ class CLHAM:
     	self.__wronganswers = []
     	self.__starttime = 0
     	self._endtime = 0
-    	self.__ordered = 0
     	
     def parseOptions(self, args):
     	import getopt
     	try:
-    		optlist, arglist = getopt.getopt(args, 'i:m:fo')  #f is a switch and doesn't require an arg
+    		optlist, arglist = getopt.getopt(args, 'i:m:af')  #f is a switch and doesn't require an arg. 'a' too.
     	except getopt.GetoptError, e:
     		print e
     		return None
@@ -115,12 +135,12 @@ class CLHAM:
     	for option, value in optlist:
     		if option.lower() in ('-i', ):
     			self.__filename = value
+    		if option.lower() in ('-a', ):
+    			self.__test_type = 1 #advanced
     		elif option.lower() in ('-m', ):
     			self.__mode = value
     		elif option.lower() in ('-f', ):
     			self.__lang_sel = 1
-    		elif option.lower() in ('-o', ):
-    			self.__ordered = 1
 
 
         if not self.__filename:
@@ -150,11 +170,15 @@ class CLHAM:
     def generatetest(self):
     	from random import shuffle
     	import random
-    	print section_select[self.__lang_sel]
+    	text = section_select[self.__test_type]
+    	print text[self.__lang_sel]
     	inp = raw_input()
     	tempbank = []
     	if inp == '':
-    		sections = [1,2,3,4,5,6,7,8]
+    		if self.__test_type == 0:
+	    		sections = [1,2,3,4,5,6,7,8]
+	    	else:
+	    		sections = [1,2,3,4,5,6,7]	    	
     	else:
     		ranges = (x.split("-") for x in inp.split(","))
     		sections = [i for r in ranges for i in range(int(r[0]), int(r[-1])+1)]
@@ -204,9 +228,7 @@ class CLHAM:
     			temp.append(question[i+offset])
     		set.append(temp)
     		self.__workingbank.append(set)
-    	#Allow full test shuffle or leave order alone
-    	if self.__ordered == 0:
-    		shuffle(self.__workingbank)
+    	shuffle(self.__workingbank)
     	for question in self.__workingbank:
     		correct_answer = question[2][0]
     		shuffle(question[2])
@@ -271,22 +293,21 @@ class CLHAM:
     def save(self):
     	#self.__endtime = time.time()
 		print "Total time elapsed is: "+ self.get_time_elapsed()
-		print "You are leaving the CLHAM."
-		if len(self.__wronganswers) > 1:
-			print "Would you like to save the set of questions you got wrong to a text file to review or load into the CLHAM later? (Enter N for 'no' or the filename if yes, then press Enter)"
-			response = raw_input()
-			if response == '':
-				print "Goodbye."
-			elif response.lower() == 'n':
-				print "Your loss."
-			else:		
-				print "Saving questions for review to "+ response
-				f = open(response, 'w')
-				#print self.__wronganswers
-				for line in self.__wronganswers:
-					temp = ';'.join(line[2])
-					f.write(';'.join([line[0],line[1],temp])+'\n')
-				f.close()
+		print "You are leaving the CLHAM. Would you like to save the set of questions you got wrong to a text file to review or load into the CLHAM later? (Enter N for 'no' or the filename if yes, then press Enter)"
+		response = raw_input()
+		if response == '':
+			print "Goodbye."
+		elif response.lower() == 'n':
+			print "Your loss."
+		else:		
+			print "Saving questions for review to "+ response
+			f = open(response, 'w')
+			print self.__wronganswers
+			for line in self.__wronganswers:
+				temp = ';'.join(line[2])
+				f.write(';'.join([line[0],line[1],temp])+'\n')
+			f.close()
+		#pause()
     
 def main():
 	print title
