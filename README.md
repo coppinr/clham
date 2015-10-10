@@ -6,13 +6,17 @@
 
 ###Quick Start:
 
-> Usage: clham.py -i <input textfile>
-> OPTIONAL arguments: 	
-> * -a <advanced question set [DEFAULT is basic]> 
-> * -m <mode: all [DEFAULT], exam>
-> * -f <selects Francais -- English is DEFAULT>
->
-> Enter "q" anytime to quit.
+Usage: clham.py -i <input textfile>
+
+OPTIONAL arguments:
+
+-a '<advanced question set [DEFAULT is basic]> 
+
+-m <mode: all [DEFAULT], exam>
+
+-f <selects Francais -- English is DEFAULT>
+
+Enter "q" anytime to quit.
 
 **Notes:**
 1. The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
