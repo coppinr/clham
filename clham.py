@@ -102,7 +102,7 @@ intro = [
 "Command-Line HAM: Helping you study for the Canadian Amateur Radio Licensing exam(s)",
 "Command-Line HAM: Vous aidez a etudier pour l'examen 'Canadian Amateur Radio Licensing'"]
 section_select = [ [
-		"""Which sections would you like to run? Hit Enter for all, or a single digit, a range (1-8) or comma-separated values (1,3,4):
+		"""Which sections would you like to run?\nHit 'Enter' for all or type a single digit (e.g. 1), a range (1-8) or a list of comma-separated values and/or ranges ( (1,3,4,5,6) or (1,3,4-6) ) and then hit 'Enter':
     	1 - Regulations and Policies (25 subsections)
     	2 - Operating and Procedures (9 subsections)
     	3 - Station Assembly, Practices and Safety (21 subsections)
@@ -112,7 +112,7 @@ section_select = [ [
     	7 - Propagation (8 subsections)
     	8 - Interference and Suppression (5 subsections)
     	""",
-    	"""Quel(s) sections voulez-vous essayer? Appuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-8), ou une series de nombres comme ca: (1,3,4):
+    	"""Quel(s) sections voulez-vous essayer?\nAppuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-8), ou une series de nombres comme ca: (1,3,4):
     	1 - Regulations
     	2 - Operations
     	3 - Station Assembly, Practices and Safety
@@ -124,7 +124,7 @@ section_select = [ [
     	"""
 	],
 	[
-		"""Which sections would you like to run? Hit Enter for all, or a single digit, a range (1-7) or comma-separated values (1,3,4):
+		"""Which sections would you like to run?\nHit 'Enter' for all or type a single digit (e.g. 1), a range (1-8) or a list of comma-separated values and/or ranges ( (1,3,4,5,6) or (1,3,4-6) ) and then hit 'Enter':
     	1 - RF current, time constant, RLC circuit resonance and Q (5 subsections)
     	2 - Diodes, op-amps, frequency multipliers, crystal oscillators, filters (12 subsections)
     	3 - Measuring with voltmeter, oscilloscope, freq. counter, dip meter (6 subsections)
@@ -133,7 +133,7 @@ section_select = [ [
     	6 - Signal processing (5 subsections)
     	7 - Antennas and tuning (9 subsections)
     	""",
-    	"""Quel(s) sections voulez-vous essayer? Appuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-7), ou une series de nombres comme ca: (1,3,4):
+    	"""Quel(s) sections voulez-vous essayer?\nAppuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-7), ou une series de nombres comme ca: (1,3,4):
     	1 - RF / RLC (5)
     	2 - Semiconductors (12)
     	3 - Measurements (6)
@@ -206,7 +206,7 @@ class CLHAM:
     	print intro[self.__lang_sel]
             
     def loadquestionbank(self):
-		print("Loading question bank from "+ self.__filename)
+		print("Loading question bank from \""+ self.__filename+ "\"")
 		count = 0
 		try:
 			f = open(self.__filename, 'r')
@@ -299,7 +299,7 @@ class CLHAM:
     	#print self.__wronganswers
     	
     	
-    	print "Test generated with "+ str(len(self.__workingbank)) +" questions."
+    	print(('Test generated with '+ str(len(self.__workingbank)) +' question'+ ('s' if (len(self.__workingbank) >1) else '') +'.'))
     	
     def get_time_elapsed(self):
     	m, s = divmod(time.time() - self.__starttime, 60)
