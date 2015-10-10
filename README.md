@@ -6,17 +6,18 @@
 
 ###Quick Start:
 
-Usage: clham.py -i <input textfile>
+Usage: **clham.py -i &lt;input textfile&lt;**
 
 OPTIONAL arguments:
 
--a (use for advanced question set [DEFAULT is basic])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**-a** (use for advanced question set [DEFAULT is basic])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**-m** (mode: "**exam**" for exam silumator [DEFAULT is "all" questions])
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+**-f** (use to select Francais [DEFAULT landuage is English])
 
--m (mode: "exam" for exam silumator [DEFAULT is "all" questions])
-
--f (use to select Francais [DEFAULT landuage is English])
-
-Enter "q" anytime to quit.
+Enter "**q**" anytime to quit.
 
 **Notes:**
 1. The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
