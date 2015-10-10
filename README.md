@@ -1,9 +1,9 @@
 #CLHAM
-##Command-line (Canadian) HAM amateur radio question bank test generator
+##**C**ommand-**L**ine (Canadian) **HAM** amateur radio question bank test generator
 
 *by Rhiannon Coppin, North Vancouver, B.C.*
 
-*Updated: Oct. 10, 2015.*
+*Updated: Oct. 10, 2015*
 
 ###Quick Start:
 
