@@ -1,0 +1,14 @@
+Chaque enregistrement a les données suivantes, séparées par ";"
+
+question ID
+question anglais
+Bonne réponse anglais
+Mauvaise réponse anglais 1
+Mauvaise réponse anglais 2
+Mauvaise réponse anglais 3
+question français
+Bonne réponse française
+Mauvaise réponse française 1
+Mauvaise réponse française 2
+Mauvaise réponse française 3
+
