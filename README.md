@@ -43,8 +43,8 @@ To run the set of questions you got wrong and save to a textfile (say, name "wro
 
 This command-line python utility reads in and presents various forms of the basic and advanbced question banks, which are made available as dual-language delimited text files from Industry Canada's website.
 The URLs of these file (zipped) at this time (Oct. 2015) are: 
-[http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip)
-[http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip)
+* [http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip)
+* [http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip)
 
 Locator URL on Industry Canada site: [http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html](http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html)
 
@@ -53,14 +53,14 @@ The current schema of the text question bank is, as Industry Canada states:
 
 Each record has the following data, separated by ";"
 
-*Question ID
-*English Question
-*Correct English Answer
-*Incorrect English Answer 1
-*Incorrect English Answer 2
-*Incorrect English Answer 3
-*French Question
-*Correct French Answer
-*Incorrect French Answer 1
-*Incorrect French Answer 2
-*Incorrect French Answer 3
+* Question ID
+* English Question
+* Correct English Answer
+* Incorrect English Answer 1
+* Incorrect English Answer 2
+* Incorrect English Answer 3
+* French Question
+* Correct French Answer
+* Incorrect French Answer 1
+* Incorrect French Answer 2
+* Incorrect French Answer 3
