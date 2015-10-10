@@ -6,23 +6,27 @@
 
 ###Quick Start:
 
-Usage: **clham.py -i &lt;input textfile&lt;**
+Usage: **clham.py -i &lt;input textfile&gt;**
 
 OPTIONAL arguments:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 **-a** (use for advanced question set [DEFAULT is basic])
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 **-m** (mode: "**exam**" for exam silumator [DEFAULT is "all" questions])
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 **-f** (use to select Francais [DEFAULT landuage is English])
 
 Enter "**q**" anytime to quit.
 
 **Notes:**
+
 1. The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
+
 2. The exam mode ("-m exam") runs through one pseudo-randomly chosen question from each section (though you can restrict which sections to pull from), resulting in a generated test of 50 questions for the Advanced set, and of 100 questions for the Basic set.
+
 3. You are given the option after finishing the test, or even after entering "q" to quit, to save the questions you got wrong to a text file. You can then rerun that text file as input, and run a test from only your 'problem' questions.
+
 4. The French translation of the intro and section labels is poor; the labelling of the section in English may also be questionable.
 
 ###Example Usage:
