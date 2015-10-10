@@ -10,11 +10,11 @@ Usage: clham.py -i <input textfile>
 
 OPTIONAL arguments:
 
--a '<advanced question set [DEFAULT is basic]> 
+-a (use for advanced question set [DEFAULT is basic])
 
--m <mode: all [DEFAULT], exam>
+-m (mode: "exam" for exam silumator [DEFAULT is "all" questions])
 
--f <selects Francais -- English is DEFAULT>
+-f (use to select Francais [DEFAULT landuage is English])
 
 Enter "q" anytime to quit.
 
