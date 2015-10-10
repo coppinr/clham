@@ -1,13 +1,52 @@
 CLHAM
 
-Command-line (Canadian) HAM amateur radio
+Created April 7, 2015 for Basic question set.
+Updated Sept. 21, 2015 to accomodate Advanced question set as well.
+Tidied up Oct. 10, 2015.
 
-by Rhiannon Coppin, North Vancouver, B.C.
-April 7, 2015
+Quick Start:
+============
+Usage: clham.py -i <input textfile>
+OPTIONAL arguments: 	
+			-a <advanced question set [DEFAULT is basic]> 
+			-m <mode: all [DEFAULT], exam>
+			-f <selects Francais -- English is DEFAULT>
 
-This command-line python utility reads in and presents various forms of the question bank, which is made available as a dual-language delimited text file from Industry Canada's web site.
-The URL of this file (zipped) at this time (April 2015) is: http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip
+Enter "q" anytime to quit.
+
+Notes:
+1) The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
+2) The exam mode ("-m exam") runs through one pseudo-randomly chosen question from each section (though you can restrict which sections to pull from), resulting in a generated test of 50 questions for the Advanced set, and of 100 questions for the Basic set.
+3) You are given the option after finishing the test, or even after entering "q" to quit, to save the questions you got wrong to a text file. You can then rerun that text file as input, and run a test from only your 'problem' questions.
+4) The French translation of the intro and section labels is poor; the labelling of the section in English may also be questionable.
+
+Example Usage:
+To run one or more entire sections from the Advanced Question Bank:
+python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt
+
+To run a simulated Advanced exam:
+python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt -m exam
+
+To run one or more entire sections from the Basic Question Bank:
+python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt
+
+To run a simulated Basic exam:
+python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt -m exam
+
+To run the set of questions you got wrong and save to a textfile (say, name "wrong_answers.txt") from a previous run this program:
+python clham.py -i wrong_answers.txt
+
+**To run the Industry Canada question banks in French instead, add the switch "-f" to any of the commands above
+
+Details:
+========
+This command-line python utility reads in and presents various forms of the basic and advanbced question banks, which are made available as dual-language delimited text files from Industry Canada's website.
+The URLs of these file (zipped) at this time (Oct. 2015) are: 
+http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip 
+http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip
+
 Locator URL on Industry Canada site: http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html
+
 Note: If the format of the file changes substantially, this program may need modification to function.
 The current schema of the text question bank is, as Industry Canada states:
 
@@ -24,23 +63,3 @@ Correct French Answer
 Incorrect French Answer 1
 Incorrect French Answer 2
 Incorrect French Answer 3
-
------ The questions are divided into eight sections, which have their own subsections.
-Some others have labelled them as follows:
-
-1 - Regulations and Policies (25 subsections)
-2 - Operating and Procedures (9 subsections)
-3 - Station Assembly, Practices and Safety (21 subsections)
-4 - Circuit Components (6 subsections)
-5 - Basic Electronics and Theory (13 subsections)
-6 - Antennas and Feedlines (13 subsections)
-7 - Propagation (8 subsections)
-8 - Interference and Suppression (5 subsections)
-
-Note: The actualy exam has 100 questions. There are also 100 subsections in total.
-It appears that the practice tests are generated (see http://apc-cap.ic.gc.ca/pls/apc_anon/apeg_print.basic_exam)
-by taking one question from each of the subsections, so that is what I do here.
-
-
-I give the option of running the test in french (-f at command line).
-I also give you the option of saving a file of the questions you got wrong, so you can re-load them all again to re-test just them.

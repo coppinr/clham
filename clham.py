@@ -1,20 +1,19 @@
 """
 CLHAM
 
-Command-line (Canadian) HAM amateur radio
-
+Command-line (Canadian) HAM amateur radio question bank explorer
 by Rhiannon Coppin, North Vancouver, B.C.
-April 7, 2015
-Updated Sept. 21, 2015 to use Advanced Question set as well.
+Created April 7, 2015 for Basic question set.
+Updated Sept. 21, 2015 to accomodate Advanced question set as well.
+Tidied up Oct. 10, 2015.
 
-This command-line python utility reads in and presents various forms of the question bank, which is made available as a dual-language delimited text file from Industry Canada's web site.
-The URL of this file (zipped) at this time (April 2015) is: http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip
+This command-line python utility reads in and presents various forms of the basic and advanbced question banks, which are made available as dual-language delimited text files from Industry Canada's website.
+The URLs of these file (zipped) at this time (Oct. 2015) is: http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip and http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip
 Locator URL on Industry Canada site: http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html
 Note: If the format of the file changes substantially, this program may need modification to function.
 The current schema of the text question bank is, as Industry Canada states:
 
 Each record has the following data, separated by ";"
-
 Question ID
 English Question
 Correct English Answer
@@ -93,7 +92,7 @@ section_select = [ [
 TO DO
 FIXED - UNICODE French character compatibility problem
 Better french translation
-Timer for text simulator mode
+Timer for test simulator mode
 ADD URL downloadability
 """
 import re
@@ -112,7 +111,7 @@ class CLHAM:
     def __init__(self):
     	# input filename or URL
         self.__filename = ''
-        self.__test_types = 0 #basic
+        self.__test_type = 0 #basic
         #mode = all questions, just some sections, or an exam simulation mode
         self.__mode = 'all'
         #default language is english
@@ -178,8 +177,10 @@ class CLHAM:
     		if self.__test_type == 0:
 	    		sections = [1,2,3,4,5,6,7,8]
 	    	else:
-	    		sections = [1,2,3,4,5,6,7]	    	
-    	else:
+	    		sections = [1,2,3,4,5,6,7]
+        elif inp.lower() == 'q':
+	    	quit()
+        else:
     		ranges = (x.split("-") for x in inp.split(","))
     		sections = [i for r in ranges for i in range(int(r[0]), int(r[-1])+1)]
     	
@@ -287,7 +288,7 @@ class CLHAM:
     			self.__wronganswers.append(question)
     		pause()
     		percent = round((float(correct)/float(count))*100,2)
-    		print "You have answered "+ str(correct)+" correct and "+ str(count-correct) +" wrong, which is a score of "+str(percent)+" %.\n"
+    		print "You have "+ str(correct)+" correct and "+ str(count-correct) +" wrong answers, which is a score of "+str(percent)+" %.\n"
     
     
     def save(self):
