@@ -6,15 +6,14 @@
 
 ###Quick Start:
 
-'''
-Usage: clham.py -i <input textfile>
-OPTIONAL arguments: 	
-			-a <advanced question set [DEFAULT is basic]> 
-			-m <mode: all [DEFAULT], exam>
-			-f <selects Francais -- English is DEFAULT>
+> Usage: clham.py -i <input textfile>
+> OPTIONAL arguments: 	
+> * -a <advanced question set [DEFAULT is basic]> 
+> * -m <mode: all [DEFAULT], exam>
+> * -f <selects Francais -- English is DEFAULT>
+>
+> Enter "q" anytime to quit.
 
-Enter "q" anytime to quit.
-'''
 **Notes:**
 1. The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
 2. The exam mode ("-m exam") runs through one pseudo-randomly chosen question from each section (though you can restrict which sections to pull from), resulting in a generated test of 50 questions for the Advanced set, and of 100 questions for the Basic set.
@@ -23,19 +22,19 @@ Enter "q" anytime to quit.
 
 ###Example Usage:
 To run one or more entire sections from the Advanced Question Bank:
-'''python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt''''
+> python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt
 
 To run a simulated Advanced exam:
-'''python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt -m exam'''
+> python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt -m exam
 
 To run one or more entire sections from the Basic Question Bank:
-'''python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt'''
+> python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt
 
 To run a simulated Basic exam:
-'''python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt -m exam'''
+> python clham.py -i amat_basic_quest/amat_basic_quest_delim.txt -m exam
 
 To run the set of questions you got wrong and save to a textfile (say, name "wrong_answers.txt") from a previous run this program:
-'''python clham.py -i wrong_answers.txt'''
+> python clham.py -i wrong_answers.txt
 
 **To run the Industry Canada question banks in French instead, add the switch "-f" to any of the commands above**
 
