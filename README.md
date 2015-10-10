@@ -2,6 +2,7 @@
 ##Command-line (Canadian) HAM amateur radio question bank test generator
 
 *by Rhiannon Coppin, North Vancouver, B.C.*
+
 *Updated: Oct. 10, 2015.*
 
 ###Quick Start:
@@ -23,13 +24,13 @@ Enter "**q**" anytime to quit.
 
 1. The input text file can be the Industry Canada delimited question bank, or the output of "wrong answers" obtained from a previous run of this program.
 
-2. The exam mode ("-m exam") runs through one pseudo-randomly chosen question from each section (though you can restrict which sections to pull from), resulting in a generated test of 50 questions for the Advanced set, and of 100 questions for the Basic set.
+2. The exam mode ("**-m exam**") runs through one pseudo-randomly chosen question from each section (though you can restrict which sections to pull from), resulting in a generated test of 50 questions for the Advanced set, and of 100 questions for the Basic set.
 
 3. You are given the option after finishing the test, or even after entering "q" to quit, to save the questions you got wrong to a text file. You can then rerun that text file as input, and run a test from only your 'problem' questions.
 
 4. The French translation of the intro and section labels is poor; the labelling of the section in English may also be questionable.
 
-###Example Usage:
+###Sample Usage:
 To run one or more entire sections from the Advanced Question Bank:
 > python clham.py -a -i amat_adv_quest/amat_adv_quest_delim.txt
 
@@ -50,6 +51,7 @@ To run the set of questions you got wrong and save to a textfile (say, name "wro
 ###Details:
 
 This command-line python utility reads in and presents various forms of the basic and advanbced question banks, which are made available as dual-language delimited text files from Industry Canada's website.
+
 The URLs of these file (zipped) at this time (Oct. 2015) are: 
 * [http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_basic_quest.zip)
 * [http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip](http://apc-cap.ic.gc.ca/datafiles/amat_adv_quest.zip)
@@ -57,6 +59,7 @@ The URLs of these file (zipped) at this time (Oct. 2015) are:
 Locator URL on Industry Canada site: [http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html](http://www.ic.gc.ca/eic/site/025.nsf/eng/h_00004.html)
 
 Note: If the format of the file changes substantially, this program may need modification to function.
+
 The current schema of the text question bank is, as Industry Canada states:
 
 Each record has the following data, separated by ";"
