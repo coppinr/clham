@@ -1,5 +1,5 @@
 #CLHAM
-##**C**ommand-**L**ine (Canadian) **HAM** amateur radio question bank test generator
+##**C**ommand-**L**ine (Canadian) **HAM**: *Test generator for the Industry Canada amateur radio question banks*
 
 *by Rhiannon Coppin, North Vancouver, B.C.*
 
