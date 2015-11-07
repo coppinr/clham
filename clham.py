@@ -7,7 +7,7 @@ Test generator for the Industry Canada amateur radio question banks
 
 by Rhiannon Coppin, North Vancouver, B.C.
 
-Updated: Oct. 10, 2015
+Updated: Nov. 6, 2015
 
 Quick Start:
 
@@ -130,7 +130,7 @@ section_select = [ [
     	2 - Advanced components and circuits (diodes, transistors, op-amps, frequency multipliers, crystal oscillators - 12 subsections)
     	3 - Measurements (AC, PTP, RMS, PEP, dip meter, oscilloscope, freq. counter, dip meter - 6 subsections)
     	4 - Power supplies (transformers, rectifiers, filter circuits, voltage regulators - 4 subsections)
-    	5 - Transmitters, modulation and processing(  - 9 subsections)
+    	5 - Transmitters, modulation and processing (PLL, RF power amp, neutralization, AM, SSB, FM deviation, signal processing, codes, spread spectrum - 9 subsections)
     	6 - Receivers (superhet, oscillators, mixing, tuning, RF, IF, selectivity, detection, AGC, performance - 5 subsections)
     	7 - Feedlines: Matching and antenna systems (9 subsections)
     	""",
