@@ -126,13 +126,13 @@ section_select = [ [
 	],
 	[
 		"""Which sections would you like to run?\nHit 'Enter' for all or type a single digit (e.g. 1), a range (1-8) or a list of comma-separated values and/or ranges ( (1,3,4,5,6) or (1,3,4-6) ) and then hit 'Enter':
-    	1 - RF current, time constant, RLC circuit resonance and Q (5 subsections)
-    	2 - Diodes, op-amps, frequency multipliers, crystal oscillators, filters (12 subsections)
-    	3 - Measuring with voltmeter, oscilloscope, freq. counter, dip meter (6 subsections)
-    	4 - Transformers and power supplies (4 subsections)
-    	5 - Modulation (9 subsections)
-    	6 - Signal processing (5 subsections)
-    	7 - Antennas and tuning (9 subsections)
+    	1 - Advanced theory (time Constant, skin effect, resonance, Q - 5 subsections)
+    	2 - Advanced components and circuits (diodes, transistors, op-amps, frequency multipliers, crystal oscillators - 12 subsections)
+    	3 - Measurements (AC, PTP, RMS, PEP, dip meter, oscilloscope, freq. counter, dip meter - 6 subsections)
+    	4 - Power supplies (transformers, rectifiers, filter circuits, voltage regulators - 4 subsections)
+    	5 - Transmitters, modulation and processing(  - 9 subsections)
+    	6 - Receivers (superhet, oscillators, mixing, tuning, RF, IF, selectivity, detection, AGC, performance - 5 subsections)
+    	7 - Feedlines: Matching and antenna systems (9 subsections)
     	""",
     	"""Quel(s) sections voulez-vous essayer?\nAppuyez 'Enter' pour tous, ou entrez un chiffre, un 'range' (1-7), ou une series de nombres comme ca: (1,3,4):
     	1 - RF / RLC (5)
